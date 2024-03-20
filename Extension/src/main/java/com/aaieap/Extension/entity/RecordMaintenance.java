@@ -2,9 +2,9 @@ package com.aaieap.Extension.entity;
 
 import java.sql.Date;
 
+
 import cn.afterturn.easypoi.excel.annotation.Excel;
 import cn.afterturn.easypoi.excel.annotation.ExcelEntity;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,10 +13,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
@@ -44,7 +44,7 @@ public class RecordMaintenance
 //    @Excel(name = "IDC Site", width = 10)
 //    private String idcSiteName;
     
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "idcSite", referencedColumnName = "id", nullable = false)
     @ExcelEntity
     private IDCSite idcSite;
@@ -67,7 +67,7 @@ public class RecordMaintenance
     @Excel(name = "H3C PM", width = 10)
     private String clientPM;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "aaiPM", referencedColumnName = "id", nullable = false)
     private Employer aaiPM;
 
@@ -75,7 +75,7 @@ public class RecordMaintenance
     @Excel(name = "AAI PM", width = 10)
     private String aaiPMName;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "aaiOnsiteTechnician", referencedColumnName = "id", nullable = false)
     private Employer aaiOnsiteTechnician;
 
@@ -89,5 +89,4 @@ public class RecordMaintenance
     private Integer onsiteTechnicianDispatched;
     @Excel(name = "Comments", width = 10)
     private String comments;
-    
 }

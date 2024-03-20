@@ -67,7 +67,6 @@ const Detail = ({ isOpen, onClose, onSave, onDelete, isAdd, data }) => {
       ...prevState,
       [name]: value,
     }));
-    console.log("changed:", name, " -> ", value)
   };
 
   const handleSubmit = (e) => {

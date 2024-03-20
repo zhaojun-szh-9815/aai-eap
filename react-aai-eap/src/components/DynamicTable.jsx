@@ -79,21 +79,17 @@ const DynamicTable = ({ apiUrl, dataSample }) => {
   };
 
   const deleteRow = async (editedRow) => {
-    await axios.delete(apiUrl+"/remove/"+editedRow.id).then((response) => console.log(response.data)).catch((error) => console.error(error))
+    await axios.delete(apiUrl+"/remove/" + editedRow.id).then((response) => console.log(response)).catch((error) => console.error(error))
     setIsDetailOpen(false)
     fetchData(0)
+    console.log("after delete: ", data)
   }
 
   const fetchData = React.useCallback(async (pageIndex) => {
     try {
       const response = await axios.get(apiUrl+"/list/"+pageIndex);
-      if (response.data.nodes.length > 0) {
-          console.log(response.data)
-          setData(response.data);
-          // setColumns(getAllKeys(response.data.nodes))
-          // setOptions(getAllKeys(response.data.nodes).map((item, index) => ({value: item, label: item})))
-          // setIsLoading(false)
-      }
+      console.log("fetch:",response.data)
+      setData(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
